@@ -32,6 +32,16 @@ export const pages = [
         component: React.lazy(() => import("./admin/user")),
         title: "User",
       },
+      {
+        path: routerLinks("Vehicle"),
+        component: React.lazy(() => import("./admin/vehicle")),
+        title: "Vehicle",
+      },
+      {
+        path: routerLinks("Rent"),
+        component: React.lazy(() => import("./admin/rent")),
+        title: "Rent",
+      },
     ], // 💬 generate link to here
   }
 ];

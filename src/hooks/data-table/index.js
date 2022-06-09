@@ -57,6 +57,7 @@ const Hook = (
   }, [idTable]);
 
   const onChange = useCallback(async (request) => {
+    // console.log(request);
     if (request) {
       localStorage.setItem(idTable, JSON.stringify(request));
       param.current = request;
