@@ -91,7 +91,7 @@ const Layout = ({ children }) => {
             >
               <div className="text-right leading-none mr-3 hidden sm:block">
                 <div className="font-bold text-black text-lg leading-snug mb-0.5">{user?.name}</div>
-                <div className="text-gray-500">admin@admin.com</div>
+                <div className="text-gray-500">{user?.email}</div>
               </div>
               <Avatar src={avatar} size={10} />
             </section>
@@ -106,12 +106,12 @@ const Layout = ({ children }) => {
       <Header isCollapsed={isCollapsed} isDesktop={isDesktop}/>
       <div
         className={classNames(
-          "flex items-center justify-between text-gray-800 hover:text-gray-500 h-20 fixed top-0 left-0 px-5 font-bold transition-all duration-300 ease-in-out z-10",
+          "flex items-center justify-between text-white hover:text-gray-500 h-20 fixed top-0 left-0 px-5 font-bold transition-all duration-300 ease-in-out z-10",
           {
             'w-80': !isCollapsed && isDesktop,
             'w-20': isCollapsed,
-            'bg-blue-100': isDesktop,
-            'bg-blue-50': !isDesktop
+            'bg-red-500': isDesktop,
+            'bg-red-50': !isDesktop
           })}
       >
         <div>
@@ -126,7 +126,7 @@ const Layout = ({ children }) => {
                 'opacity-0 text-[0px] invisible': !!isCollapsed || !isDesktop
               })}
             >
-              Admin
+              Vehicle
             </div>
           </a>
         </div>
@@ -136,7 +136,7 @@ const Layout = ({ children }) => {
         </div>
       </div>
       <div
-        className={classNames("fixed z-10 top-20 left-0 h-screen bg-blue-100 transition-all duration-300 ease-in-out",
+        className={classNames("fixed z-10 top-20 left-0 h-screen bg-red-500 transition-all duration-300 ease-in-out",
           {'w-80': !isCollapsed, 'w-20': isCollapsed, '-left-20': isCollapsed && !isDesktop})}
       >
 

@@ -1,5 +1,5 @@
 import React from "react";
-import {routerLinks} from "utils";
+import { routerLinks } from "utils";
 
 export const pages = [
   {
@@ -31,6 +31,16 @@ export const pages = [
         path: routerLinks("User"),
         component: React.lazy(() => import("./admin/user")),
         title: "User",
+      },
+      {
+        path: routerLinks("Vehicle"),
+        component: React.lazy(() => import("./admin/vehicle")),
+        title: "Vehicle",
+      },
+      {
+        path: routerLinks("Hire"),
+        component: React.lazy(() => import("./admin/hire")),
+        title: "Hire",
       },
     ], // 💬 generate link to here
   }

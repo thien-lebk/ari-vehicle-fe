@@ -95,13 +95,13 @@ const Page = () => {
     }),
     rightHeader: (
       <Fragment>
-        <button
+        {/* <button
           className="bg-blue-500 text-white px-4 py-2.5 rounded-xl hover:bg-blue-400 inline-flex items-center mr-2"
           onClick={() => handleShowDrag()}
         >
           <i className="las la-plus mr-1"/>
           {t('Vai trò')}
-        </button>
+        </button> */}
         <button
           className="bg-blue-500 text-white px-4 py-2.5 rounded-xl hover:bg-blue-400 inline-flex items-center"
           onClick={() => handleEdit()}
