@@ -1,8 +1,8 @@
 import axios from "axios";
 
-import {routerLinks} from "utils";
-import {Message} from "components";
-import {keyRefreshToken, keyToken} from "../../variable";
+import { routerLinks } from "utils";
+import { Message } from "components";
+import { keyRefreshToken, keyToken } from "../../variable";
 
 export const UserService = {
   nameLink: "User",
@@ -12,8 +12,10 @@ export const UserService = {
       return {
         // ...data,
         data: {
-          token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbXBsb3llZUlkIjoiMSIsInJvbGUiOiJVc2VyIiwibmJmIjoxNjI0MzY5Mjk3LCJleHAiOjE2MjQ0NTU2OTcsImlhdCI6MTYyNDM2OTI5NywiaXNzIjoiaHR0cHM6Ly90cnVuZy5uZXQubGV2aW5jaXRlc3QuY29tL2FwaS8ifQ.bGF2dbIZMwEEKbTuTjRJE_kkEyX0znDSQMji1bpIjQU",
-          avatarPath: "https://talkpro.edu.vn/wp-content/uploads/2017/11/avatar-girl-xinh-6.jpg",
+          token:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbXBsb3llZUlkIjoiMSIsInJvbGUiOiJVc2VyIiwibmJmIjoxNjI0MzY5Mjk3LCJleHAiOjE2MjQ0NTU2OTcsImlhdCI6MTYyNDM2OTI5NywiaXNzIjoiaHR0cHM6Ly90cnVuZy5uZXQubGV2aW5jaXRlc3QuY29tL2FwaS8ifQ.bGF2dbIZMwEEKbTuTjRJE_kkEyX0znDSQMji1bpIjQU",
+          avatarPath:
+            "https://talkpro.edu.vn/wp-content/uploads/2017/11/avatar-girl-xinh-6.jpg",
           createdBy: 1,
           createdDate: "2021-03-17T16:12:50",
           email: "admin@admin.com",
@@ -35,14 +37,16 @@ export const UserService = {
       if (refreshToken) {
         const { data } = await axios.post(
           `${routerLinks(UserService.nameLink, "api")}/refresh-token`,
-          {}, {params: {refreshToken: "Bearer " + refreshToken}}
+          {},
+          { params: { refreshToken: "Bearer " + refreshToken } }
         );
-        axios.defaults.headers.common["Authorization"] = "Bearer " + data.accessToken;
+        axios.defaults.headers.common["Authorization"] =
+          "Bearer " + data.accessToken;
         localStorage.setItem(keyToken, data.accessToken);
         return data;
       }
-      return null
-    }catch (e) {
+      return null;
+    } catch (e) {
       if (e.response.data.message) Message.error(e.response.data.message);
       return false;
     }
@@ -53,7 +57,7 @@ export const UserService = {
         `${routerLinks(UserService.nameLink, "api")}/log-out`
       );
       return data;
-    }catch (e) {
+    } catch (e) {
       if (e.response.data.message) Message.error(e.response.data.message);
       return false;
     }
@@ -66,20 +70,110 @@ export const UserService = {
       // return data;
       return {
         data: [
-          {id: 1,name: 'Nguyễn Văn 1', username: 'UserName1', email: 'email1@gmail.com', isActive: false,},
-          {id: 2,name: 'Nguyễn Văn 2', username: 'UserName2', email: 'email2@gmail.com', isActive: true,},
-          {id: 3,name: 'Nguyễn Văn 3', username: 'UserName3', email: 'email3@gmail.com', isActive: false,},
-          {id: 4,name: 'Nguyễn Văn 4', username: 'UserName4', email: 'email4@gmail.com', isActive: true,},
-          {id: 5,name: 'Nguyễn Văn 5', username: 'UserName5', email: 'email5@gmail.com', isActive: false,},
-          {id: 6,name: 'Nguyễn Văn 6', username: 'UserName6', email: 'email6@gmail.com', isActive: true,},
-          {id: 7,name: 'Nguyễn Văn 7', username: 'UserName7', email: 'email7@gmail.com', isActive: false,},
-          {id: 8,name: 'Nguyễn Văn 8', username: 'UserName8', email: 'email8@gmail.com', isActive: true,},
-          {id: 9,name: 'Nguyễn Văn 9', username: 'UserName9', email: 'email9@gmail.com', isActive: false,},
-          {id: 10,name: 'Nguyễn Văn 10', username: 'UserName10', email: 'email10@gmail.com', isActive: true,},
+          {
+            id: 1,
+            name: "Nguyễn Văn 1",
+            username: "UserName1",
+            email: "email1@gmail.com",
+            team: 1,
+            number: 89,
+            role: "leader",
+            isActive: false,
+          },
+          {
+            id: 2,
+            name: "Nguyễn Văn 2",
+            username: "UserName2",
+            email: "email2@gmail.com",
+            team: 2,
+            number: 189,
+            role: "staff",
+            isActive: true,
+          },
+          {
+            id: 3,
+            name: "Nguyễn Văn 3",
+            username: "UserName3",
+            email: "email3@gmail.com",
+            team: 3,
+            number: 819,
+            role: "leader",
+            isActive: false,
+          },
+          {
+            id: 4,
+            name: "Nguyễn Văn 4",
+            username: "UserName4",
+            email: "email4@gmail.com",
+            team: 4,
+            number: 829,
+            role: "staff",
+            isActive: true,
+          },
+          {
+            id: 5,
+            name: "Nguyễn Văn 5",
+            username: "UserName5",
+            email: "email5@gmail.com",
+            team: 5,
+            number: 389,
+            role: "leader",
+            isActive: false,
+          },
+          {
+            id: 6,
+            name: "Nguyễn Văn 6",
+            username: "UserName6",
+            email: "email6@gmail.com",
+            team: 6,
+            number: 89,
+            role: "staff",
+            isActive: true,
+          },
+          {
+            id: 7,
+            name: "Nguyễn Văn 7",
+            username: "UserName7",
+            email: "email7@gmail.com",
+            team: 7,
+            number: 73,
+            role: "leader",
+            isActive: false,
+          },
+          {
+            id: 8,
+            name: "Nguyễn Văn 8",
+            username: "UserName8",
+            email: "email8@gmail.com",
+            team: 8,
+            number: 82,
+            role: "staff",
+            isActive: true,
+          },
+          {
+            id: 9,
+            name: "Nguyễn Văn 9",
+            username: "UserName9",
+            email: "email9@gmail.com",
+            team: 1,
+            number: 15,
+            role: "staff",
+            isActive: false,
+          },
+          {
+            id: 10,
+            name: "Nguyễn Văn 10",
+            username: "UserName10",
+            email: "email10@gmail.com",
+            team: 2,
+            number: 89,
+            role: "leader",
+            isActive: true,
+          },
         ],
         count: 20,
       };
-    }catch (e) {
+    } catch (e) {
       if (e.response.data.message) Message.error(e.response.data.message);
       return false;
     }
@@ -93,8 +187,8 @@ export const UserService = {
       // data.data.wardId = data.data.ward?.id;
       // data.data.departmentId = data.data.department?.id;
       // return data;
-      return {data: {id}};
-    }catch (e) {
+      return { data: { id } };
+    } catch (e) {
       if (e.response.data.message) Message.error(e.response.data.message);
       return false;
     }
@@ -109,7 +203,7 @@ export const UserService = {
       // if (data.message) Message.success(data.message);
       // return data;
       return values;
-    }catch (e) {
+    } catch (e) {
       if (e.response.data.message) Message.error(e.response.data.message);
       return false;
     }
@@ -123,7 +217,7 @@ export const UserService = {
       // if (data.message) Message.success(data.message);
       // return data;
       return values;
-    }catch (e) {
+    } catch (e) {
       if (e.response.data.message) Message.error(e.response.data.message);
       return false;
     }
@@ -135,8 +229,8 @@ export const UserService = {
       // );
       // if (data.message) Message.success(data.message);
       // return data;
-      return {id};
-    }catch (e) {
+      return { id };
+    } catch (e) {
       if (e.response.data.message) Message.error(e.response.data.message);
       return false;
     }

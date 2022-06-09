@@ -3,11 +3,17 @@ const Util = (name, type) => {
     Login: "/auth/login",
     Dashboard: "/",
     User: "/user",
+    Vehicle: "/vehicle",
+    Rent: "/rent",
+
   }; // 💬 generate link to here
 
   const apis = {
     Dashboard: "/dashboard",
     User: "/user",
+    Vehicle: "/vehicle",
+    Rent: "/rent",
+    
   }; // 💬 generate api to here
 
   switch (type) {

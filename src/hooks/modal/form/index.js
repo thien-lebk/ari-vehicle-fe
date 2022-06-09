@@ -24,6 +24,7 @@ const Hook = (
           try {
             setIsLoading(true);
             const res = await (data.id === undefined ? Post(values, parentID()) : Put(values, data.id, parentID(), data));
+            console.log(res);
             if (res !== false) {
               values = res?.data;
             } else {
@@ -35,6 +36,7 @@ const Hook = (
           }
         }
         handleChange && await handleChange(values, data);
+        // console.log(data);
         return true;
       })).catch(() => false);
     }
@@ -48,6 +50,7 @@ const Hook = (
       setIsLoading(true);
       const {data} = await GetById(item.id, parentID(), item);
       item = {...item, ...data};
+      console.log(item);
       setIsLoading(false);
     }
     await handleShow(item);

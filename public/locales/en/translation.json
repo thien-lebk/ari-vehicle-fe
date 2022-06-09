@@ -67,7 +67,9 @@
     "Chat": "Chat",
     "Search": "Search",
     "Dashboard": "Dashboard",
-    "User": "User"
+    "User": "User",
+    "Vehicle": "Vehicle",
+    "Rent": "Rent"
   },
   "columns": {
     "auth": {

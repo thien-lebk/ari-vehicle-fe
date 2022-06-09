@@ -32,6 +32,7 @@ const Hook = (
       setIsLoading(true);
       const {data} = await GetById(item.id);
       item = {...item, ...data};
+      console.log(data);
       setIsLoading(false);
     }
     set_data(item);
@@ -63,6 +64,7 @@ const Hook = (
               })}
               onClick={handleOk}
             >
+              {/* <p>{data}</p> */}
               {isLoading && <i className="las la-spinner mr-1 animate-spin"/>}
               {textSubmit?textSubmit: t('components.form.modal.save')}
             </button>

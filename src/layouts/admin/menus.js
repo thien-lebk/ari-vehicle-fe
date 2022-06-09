@@ -8,6 +8,14 @@ const Layout = () => [
     name: 'User',
   },
   {
+    icon: 'las la-car',
+    name: 'Vehicle',
+  },
+  {
+    icon: 'las la-hand-holding-usd',
+    name: 'Rent',
+  },
+  {
     icon: 'las la-user-plus',
     name: 'User 1',
     child: [
