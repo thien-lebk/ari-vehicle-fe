@@ -67,7 +67,10 @@
     "Chat": "Trò chuyện",
     "Search": "Tra cứu dữ liệu",
     "Dashboard": "Tra cứu dữ liệu",
-    "User": "Quản Lý Người Dùng"
+    "User": "Quản Lý Người Dùng",
+    "Vehicle": "Quản Lý Xe",
+    "HiredVehicle": "Quản Lý Cho Thuê",
+    "Hire": "Quản Lý Cho Thuê"
   },
   "columns": {
     "auth": {

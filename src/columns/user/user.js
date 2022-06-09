@@ -1,9 +1,9 @@
 import { Popconfirm, Tooltip } from "antd";
 import EditIcon from "assets/svg/edit.js";
 import RemoveIcon from "assets/svg/remove.js";
-import React, {Fragment} from "react";
-import {Avatar} from "components";
-import {routerLinks} from "utils";
+import React, { Fragment } from "react";
+import { Avatar } from "components";
+import { routerLinks } from "utils";
 const Column = ({ t, formatDate, listGender, handleEdit, handleDelete }) => {
   return [
     {
@@ -13,78 +13,13 @@ const Column = ({ t, formatDate, listGender, handleEdit, handleDelete }) => {
         filter: { type: "search" },
         sorter: true,
         onCell: (data) => ({
-          style: {paddingTop: '0.25rem', paddingBottom: 0},
-          onClick: async () => {},
+          style: { paddingTop: '0.25rem', paddingBottom: 0 },
+          onClick: async () => { },
         }),
-        render: (text) => text && <Avatar src="https://hinhanhdep.org/wp-content/uploads/2016/07/anh-avatar-girl-xinh.jpg" text={text} />
+        render: (text) => text
       },
       formItem: {
         rules: [{ type: "required" }],
-      },
-    },
-    {
-      name: "vehicles",
-      title: t("danh sách xe"),
-      formItem: {
-        name:"vehicles",
-        type:"addable",
-        text_add:t("Add vehicle"),
-        fieldsName:[
-          {name:"vehicleBrand",placeholder:"Hiệu xe"},
-          {name:"licensePlate",placeholder:"Biển số xe"},
-        ],
-      },
-    },
-    {
-      name: "gender",
-      title: "Gender",
-      formItem: {
-        type: "select",
-        rules: [{ type: "required" }],
-        list: listGender,
-      },
-    },
-    {
-      title: t("Color"),
-      name: "color",
-      formItem: {
-        type: 'color_button',
-        rules: [{ type: "required" }],
-      },
-    },
-    {
-      title: t("Tên tài khoản"),
-      name: "username",
-      tableItem: {
-        filter: { type: "search" },
-        sorter: true,
-        onCell: () => ({style: {paddingTop: '0.25rem', paddingBottom: 0}}),
-        render: (text) => text && <Avatar isGroup keySrc='avatarPath' keyName="fullName" text={[{
-          "fullName": "Văn A",
-        }, {
-          "fullName": "Quỳnh B",
-        }, {
-          "fullName": "Lê F",
-        }, {
-          "fullName": "Tân C",
-          "avatarPath": "https://hinhanhdep.org/wp-content/uploads/2016/07/anh-avatar-girl-xinh.jpg"
-        }, {
-          "fullName": "Nguyễn D",
-        }]}/>,
-      },
-      formItem: {
-        type: 'textarea',
-        rules: [{ type: "required" }],
-      },
-    },
-    {
-      title: t("Thu nhập"),
-      name: "Currency",
-      formItem: {
-        mask: {
-          'alias': 'numeric', 'groupSeparator': ',', 'digitsOptional': false, 'prefix': '$ ',
-          'placeholder': '0',
-        }
       },
     },
     {
@@ -93,53 +28,159 @@ const Column = ({ t, formatDate, listGender, handleEdit, handleDelete }) => {
       tableItem: {
         filter: { type: "search" },
         sorter: true,
+        onCell: (data) => ({
+          style: { paddingTop: '0.25rem', paddingBottom: 0 },
+          onClick: async () => { },
+        }),
+        render: (text) => text
       },
-      formItem: {
-        rules: [{ type: "required" }, { type: "email" }],
-      },
-    },
-    {
-      title: t("Trạng thái"),
-      name: "isActive",
-      tableItem: {
-        sorter: true,
-        render: (text) => text && <i className="las la-check-circle la-2x" />,
-      },
-      formItem: {
-        condition: (data) => !!data && data.id,
-        type: "switch",
-      },
-    },
-    {
-      title: t("Assign to"),
-      name: "assignTo",
       formItem: {
         rules: [{ type: "required" }],
-        type: "tag",
-        col: 24,
-        convert: (data) => (data?.map ? data.map((_item) => _item?.id || _item) : data),
-        tag: {
-          api: routerLinks("User", "api") + "/brief",
-          params: (form, fullTextSearch, value) => ({fullTextSearch, filter: {containEmployees: value ? value : []}}),
-          avatar: "avatarPath",
-          label: "fullName",
-          value: "id",
-        },
+      },
+    },
+    // {
+    //   title: t("Password"),
+    //   name: "password",
+    //   formItem: {
+    //     rules: [{ type: "required" }],
+    //   },
+    // },
+    {
+      title: t("Số Hiệu"),
+      name: "id",
+      tableItem: {
+        filter: { type: "search" },
+        sorter: true,
+        onCell: (data) => ({
+          style: { paddingTop: '0.25rem', paddingBottom: 0 },
+          onClick: async () => { },
+        }),
+        render: (text) => text
+      },
+      formItem: {
+        rules: [{ type: "required" }],
       },
     },
     {
-      title: t("Attachment"),
-      name: "attachment",
+      title: t("Chức Vụ"),
+      name: "role",
+      tableItem: {
+        onCell: (data) => ({
+          style: { paddingTop: '0.25rem', paddingBottom: 0 },
+          onClick: async () => { },
+        }),
+        render: (text) => text === 1 ? "Manager" : text === 2 ? "leader" : "Staff"
+      },
       formItem: {
-        type: "upload",
+        rules: [{ type: "required" }],
       },
     },
+
+    // {
+    //   name: "gender",
+    //   title: "Gender",
+    //   formItem: {
+    //     type: "select",
+    //     rules: [{ type: "required" }],
+    //     list: listGender,
+    //   },
+    // },
+    // {
+    //   title: t("Color"),
+    //   name: "color",
+    //   formItem: {
+    //     type: 'color_button',
+    //     rules: [{ type: "required" }],
+    //   },
+    // },
+    // {
+    //   title: t("Tên tài khoản"),
+    //   name: "username",
+    //   tableItem: {
+    //     filter: { type: "search" },
+    //     sorter: true,
+    //     onCell: () => ({style: {paddingTop: '0.25rem', paddingBottom: 0}}),
+    //     render: (text) => text && <Avatar isGroup keySrc='avatarPath' keyName="fullName" text={[{
+    //       "fullName": "Văn A",
+    //     }, {
+    //       "fullName": "Quỳnh B",
+    //     }, {
+    //       "fullName": "Lê F",
+    //     }, {
+    //       "fullName": "Tân C",
+    //       "avatarPath": "https://hinhanhdep.org/wp-content/uploads/2016/07/anh-avatar-girl-xinh.jpg"
+    //     }, {
+    //       "fullName": "Nguyễn D",
+    //     }]}/>,
+    //   },
+    //   formItem: {
+    //     type: 'textarea',
+    //     rules: [{ type: "required" }],
+    //   },
+    // },
+    // {
+    //   title: t("Thu nhập"),
+    //   name: "Currency",
+    //   formItem: {
+    //     mask: {
+    //       'alias': 'numeric', 'groupSeparator': ',', 'digitsOptional': false, 'prefix': '$ ',
+    //       'placeholder': '0',
+    //     }
+    //   },
+    // },
+    // {
+    //   title: t("Email"),
+    //   name: "email",
+    //   tableItem: {
+    //     filter: { type: "search" },
+    //     sorter: true,
+    //   },
+    //   formItem: {
+    //     rules: [{ type: "required" }, { type: "email" }],
+    //   },
+    // },
+    // {
+    //   title: t("Trạng thái"),
+    //   name: "isActive",
+    //   tableItem: {
+    //     sorter: true,
+    //     render: (text) => text && <i className="las la-check-circle la-2x" />,
+    //   },
+    //   formItem: {
+    //     condition: (data) => !!data && data.id,
+    //     type: "switch",
+    //   },
+    // },
+    // {
+    //   title: t("Assign to"),
+    //   name: "assignTo",
+    //   formItem: {
+    //     rules: [{ type: "required" }],
+    //     type: "tag",
+    //     col: 24,
+    //     convert: (data) => (data?.map ? data.map((_item) => _item?.id || _item) : data),
+    //     tag: {
+    //       api: routerLinks("User", "api") + "/brief",
+    //       params: (form, fullTextSearch, value) => ({fullTextSearch, filter: {containEmployees: value ? value : []}}),
+    //       avatar: "avatarPath",
+    //       label: "fullName",
+    //       value: "id",
+    //     },
+    //   },
+    // },
+    // {
+    //   title: t("Attachment"),
+    //   name: "attachment",
+    //   formItem: {
+    //     type: "upload",
+    //   },
+    // },
     {
       title: t("Hoạt động"),
       tableItem: {
         width: 180,
         align: "center",
-        onCell: () => ({style: {paddingTop: '0.25rem', paddingBottom: 0}}),
+        onCell: () => ({ style: { paddingTop: '0.25rem', paddingBottom: 0 } }),
         render: (text, data) => (<Fragment>
           <Tooltip title={t("routes.admin.Layout.Edit")}>
             <button

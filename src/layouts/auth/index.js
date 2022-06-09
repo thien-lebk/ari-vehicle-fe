@@ -2,7 +2,6 @@ import React, {useEffect, useRef, useCallback} from 'react';
 import {Select} from "antd";
 import {useTranslation} from "react-i18next";
 import {useAuth} from "global";
-
 import logo from "assets/images/logo.svg";
 import us from "assets/svg/us.svg";
 import vn from "assets/svg/vn.svg";
@@ -14,6 +13,7 @@ const Layout = ({children}) => {
   const {changeLanguage, logout} = useAuth();
 
   const mount = useRef(false)
+  console.log(mount)
   const initFunction = useCallback(async () => {
     // if (!!auth.user?.token) {
     //   await UserService.logout();

@@ -1,22 +1,23 @@
-import React, {useState, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-
 import { useAuth } from "global";
-import {Form, Spin} from "components";
-import {routerLinks} from "utils";
+import { Form, Spin } from "components";
+import { routerLinks } from "utils";
 import { ColumnLogin } from "columns/auth";
-import {UserService} from "services/user";
+import { UserService } from "services/user";
 import { useNavigate } from "react-router";
 
-const Page = ({location}) => {
+
+const Page = ({ location }) => {
   const { t } = useTranslation();
   const auth = useAuth();
   const navigate = useNavigate();
-
   const [loading, setLoading] = useState(false);
 
+
   const submit = async (values) => {
+
     try {
       setLoading(true);
       const res = await UserService.login({
@@ -24,9 +25,11 @@ const Page = ({location}) => {
         isRemember: values.isRemember !== undefined,
       });
       setLoading(false);
-      if (res.data) {
-        auth.login(res.data);
-        navigate(routerLinks("Dashboard"), {replace: true});
+      if (res) {
+     
+        await auth.login(res);
+        navigate(routerLinks("Dashboard"), { replace: true });
+
       }
     } catch (err) {
       console.log("Error is:", err);
